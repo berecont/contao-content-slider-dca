@@ -66,7 +66,7 @@
 
                     let delay = el.getAttribute('data-delay');
                     if (delay > 0) {
-                        opts['autoplay'] = { delay: delay };
+                        opts['autoplay'] = { delay: delay{% if data.sliderStopAutoplay %}, pauseOnMouseEnter: true {% endif %} };
                     }
 
                     new Swiper(el, Object.assign({
