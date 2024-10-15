@@ -2,6 +2,14 @@
 // contao/dca/tl_content.php
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 
+$GLOBALS['TL_DCA']['tl_content']['fields']['sliderStopAutoplay'] = [
+    'label' => ['Stop Autoplay','Wenn angehakt, und der automatische Wechsel ist aktiviert, dann stoppt der Slider bei mouse-hover.
+                Die Variable ist im Template mit <em>sliderStopAutoplay</em> verfügbar.'],
+    'inputType' => 'checkbox',
+    'eval' => ['tl_class' => 'w25 clr m12'],
+    'sql' => ['type' => 'boolean', 'default' => false],
+];
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['sliderInitClass'] = [
     'label' => ['Swiper-Klasse','Dient zur Initialisierung eines einzelnen Swiper-Elementes, wenn mehrere Swiper-Elemente mit unterschiedlichen Parameter pro Seite vorhanden sind.
                     Die Variable ist im Template mit <em>sliderInitClass</em> verfügbar.'],
@@ -38,6 +46,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sliderCustomOptions'] = [
 
 
 PaletteManipulator::create()
+    ->addField('sliderStopAutoplay', 'slider_legend', PaletteManipulator::POSITION_APPEND)    
     ->addField('sliderInitClass', 'slider_legend', PaletteManipulator::POSITION_APPEND)
     ->addField('sliderCustomOptions', 'slider_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('swiper', 'tl_content')
